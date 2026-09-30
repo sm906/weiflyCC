@@ -6,34 +6,32 @@ export default function App() {
   const [reply, setReply] = useState(
     "😊 CC-01 Navigator 已連線，歡迎回來。"
   );
-
-  const realms = [
-    {
-      icon: "🌐",
-      title: "Portal Realm",
-      domain: "weiflycc.com",
-      url: "https://weiflycc.com",
-    },
-    {
-      icon: "☁️",
-      title: "Infrastructure Realm",
-      domain: "weiflycc.net",
-      url: "https://weiflycc.net",
-    },
-    {
-      icon: "📚",
-      title: "Knowledge Realm",
-      domain: "weiflycc.org",
-      url: "https://weiflycc.org",
-    },
-    {
-      icon: "📊",
-      title: "Status Realm",
-      domain: "weiflycc.info",
-      url: "https://weiflycc.info",
-    },
-  ];
-
+const realms = [
+{
+icon: "🌐",
+title: "Portal Realm",
+domain: "weiflycc.com",
+url: "https://weiflycc.com",
+},
+{
+icon: "☁️",
+title: "Infrastructure Realm",
+domain: "weiflycc.net",
+url: "https://weiflycc.net",
+},
+{
+icon: "🛡️",
+title: "Identity Realm",
+domain: "weiflycc.org",
+url: "https://weiflycc.org",
+},
+{
+icon: "📊",
+title: "Status Realm",
+domain: "weiflycc.info",
+url: "https://weiflycc.info",
+},
+];
   const runAction = (action: string) => {
     setMessage(action);
 
