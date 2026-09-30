@@ -1,133 +1,172 @@
-import { useState } from "react";
-import "./App.css";
+import { useLocation, useNavigate } from "react-router-dom"
 
 export default function App() {
-  const [message, setMessage] = useState("");
-  const [reply, setReply] = useState(
-    "😊 CC-01 Navigator 已連線，歡迎回來。"
-  );
-const realms = [
-{
-icon: "🌐",
-title: "Portal Realm",
-domain: "weiflycc.com",
-url: "https://weiflycc.com",
-},
-{
-icon: "☁️",
-title: "Infrastructure Realm",
-domain: "weiflycc.net",
-url: "https://weiflycc.net",
-},
-{
-icon: "🛡️",
-title: "Identity Realm",
-domain: "weiflycc.org",
-url: "https://weiflycc.org",
-},
-{
-icon: "📊",
-title: "Status Realm",
-domain: "weiflycc.info",
-url: "https://weiflycc.info",
-},
-];
-  const runAction = (action: string) => {
-    setMessage(action);
+  const navigate = useNavigate()
+  const location = useLocation()
 
-    switch (action) {
-      case "查看四個網域":
-        setReply("🌐 Four Realms 已準備完成");
-        break;
-
-      case "檢查 Cloudflare":
-        setReply("☁️ Cloudflare 狀態正常");
-        break;
-
-      case "部署 Worker":
-        setReply("🚀 Worker 部署流程準備中");
-        break;
-
-      case "開啟 AI Hub":
-        setReply("🤖 AI Hub 即將開放");
-        break;
-
-      default:
-        setReply("😊 指令已收到");
-    }
-  };
+  const menus = [
+    {
+      path: "/",
+      icon: "🏠",
+      name: "Home",
+    },
+    {
+      path: "/infra",
+      icon: "🌍",
+      name: "Infrastructure",
+    },
+    {
+      path: "/r2",
+      icon: "☁️",
+      name: "Storage",
+    },
+    {
+      path: "/ai",
+      icon: "🤖",
+      name: "AI Center",
+    },
+    {
+      path: "/dashboard",
+      icon: "📊",
+      name: "Dashboard",
+    },
+  ]
 
   return (
-    <div className="app">
-      <header>
-        <h1>🦅 WEIFLYCC OS</h1>
-        <p>😊 CC-01 Navigator Online</p>
-      </header>
+    <div
+      style={{
+        display: "flex",
+        minHeight: "100vh",
+        background: "#050816",
+        color: "white",
+      }}
+    >
+      {/* Navigator */}
+      <aside
+        style={{
+          width: "260px",
+          background: "#0a1020",
+          borderRight: "1px solid #1e293b",
+          padding: "24px",
+        }}
+      >
+        <h2
+          style={{
+            margin: 0,
+            marginBottom: "30px",
+            color: "#60a5fa",
+          }}
+        >
+          🦅 WeiflyCC OS
+        </h2>
 
-      <section>
-        <h2>歡迎回來，威寶</h2>
-        <p>Personal Cloud + AI Operating System</p>
+        {menus.map((item) => {
+          const active = location.pathname === item.path
 
-        <input
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="告訴我你的想法..."
-        />
+          return (
+            <button
+              key={item.path}
+              onClick={() => navigate(item.path)}
+              style={{
+                width: "100%",
+                textAlign: "left",
+                padding: "14px 16px",
+                marginBottom: "10px",
 
-        <div className="actions">
-          <button onClick={() => runAction("部署 Worker")}>
-            部署 Worker
-          </button>
+                background: active
+                  ? "linear-gradient(90deg, rgba(59,130,246,.35), rgba(59,130,246,.08))"
+                  : "transparent",
 
-          <button onClick={() => runAction("檢查 Cloudflare")}>
-            檢查 Cloudflare
-          </button>
+                border: active
+                  ? "1px solid #3b82f6"
+                  : "1px solid transparent",
 
-          <button onClick={() => runAction("查看四個網域")}>
-            查看四個網域
-          </button>
+                borderLeft: active
+                  ? "4px solid #60a5fa"
+                  : "4px solid transparent",
 
-          <button onClick={() => runAction("開啟 AI Hub")}>
-            開啟 AI Hub
-          </button>
-        </div>
+                borderRadius: "12px",
 
-        <p>{reply}</p>
-      </section>
+                color: "#ffffff",
 
-      <section>
-        <h2>🌐 Four Realms</h2>
+                cursor: "pointer",
 
-        {realms.map((realm) => (
-          <div
-            key={realm.domain}
-            className="card"
-            onClick={() => window.open(realm.url, "_blank")}
-            style={{ cursor: "pointer" }}
+                boxShadow: active
+                  ? "0 0 18px rgba(59,130,246,.45)"
+                  : "none",
+
+                transition: "all .25s ease",
+              }}
+            >
+              {item.icon} {item.name}
+            </button>
+          )
+        })}
+      </aside>
+
+      {/* Content */}
+      <main
+        style={{
+          flex: 1,
+          padding: "32px",
+        }}
+      >
+        {location.pathname !== "/" && (
+          <button
+            onClick={() => navigate("/")}
+            style={{
+              background: "#1e293b",
+              color: "white",
+              border: "1px solid #334155",
+              borderRadius: "10px",
+              padding: "10px 16px",
+              cursor: "pointer",
+              marginBottom: "20px",
+            }}
           >
-            <h3>
-              {realm.icon} {realm.title}
-            </h3>
+            ← 返回首頁
+          </button>
+        )}
 
-            <p>{realm.domain}</p>
-          </div>
-        ))}
-      </section>
+        <h1
+          style={{
+            marginTop: 0,
+          }}
+        >
+          🦅 WeiflyCC OS
+        </h1>
 
-      <section>
-        <h2>🤖 CC Family</h2>
+        <p
+          style={{
+            color: "#94a3b8",
+          }}
+        >
+          Home Lab + Cloud + AI Platform
+        </p>
 
-        <div>CC-01 Navigator</div>
-        <div>CC-04 Cloud Weaver</div>
-        <div>CC-05 Network Sentinel</div>
-        <div>CC-10 Insight Analyst</div>
-        <div>CC-11 Automation Engineer</div>
-        <div>CC-16 Dev Assistant</div>
-      </section>
+        <div
+          style={{
+            marginTop: "30px",
+            padding: "24px",
+            borderRadius: "16px",
+            background: "#0f172a",
+            border: "1px solid #1e293b",
+          }}
+        >
+          <h2>Welcome</h2>
 
-      <footer>
-        WeiflyCC OS • Continuity • Cloud • Creation
-      </footer>
+          <p>請從左側 Navigator 選擇功能。</p>
+
+          <p>目前已規劃：</p>
+
+          <ul>
+            <li>🌍 Infrastructure</li>
+            <li>☁️ Storage (R2 / D1)</li>
+            <li>🤖 AI Center</li>
+            <li>📊 Dashboard</li>
+          </ul>
+        </div>
+      </main>
     </div>
-  );
+  )
 }

@@ -1,5 +1,20 @@
 name = "weiflycc-dashboard"
 compatibility_date = "2026-09-26"
- 
+
+main = "worker/index.js"
+
 [assets]
 directory = "./dist"
+binding = "ASSETS"
+
+[[routes]]
+pattern = "weiflycc.com/*"
+zone_name = "weiflycc.com"
+
+[[d1_databases]]
+binding = "WEIFLYCC_D1"
+database_id = "cb615e69-b922-446c-8658-da5da770c577"
+
+[[r2_buckets]]
+binding = "STORAGE"
+bucket_name = "weiflycc-storage"
