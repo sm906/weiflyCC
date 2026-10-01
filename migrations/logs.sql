@@ -1,0 +1,12 @@
+CREATE TABLE logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    level TEXT NOT NULL,
+    source TEXT NOT NULL,
+
+    message TEXT NOT NULL,
+
+    metadata TEXT,
+
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

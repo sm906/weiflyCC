@@ -1,0 +1,19 @@
+{
+"$schema": "./node_modules/wrangler/config-schema.json",
+ 
+"name": "weiflycc",
+ 
+"compatibility_date": "2026-09-30",
+ 
+"assets": {
+"directory": "./dashboard/dist"
+},
+ 
+"d1_databases": [
+{
+"binding": "DB",
+"database_name": "weiflycc-db",
+"database_id": "cb615e69-b922-446c-8658-da5da770c577"
+}
+]
+}

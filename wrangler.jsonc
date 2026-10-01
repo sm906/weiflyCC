@@ -1,8 +1,25 @@
 {
-"$schema": "./node_modules/wrangler/config-schema.json",
-"name": "weiflycc",
-"compatibility_date": "2026-09-26",
-"assets": {
-"directory": "./dashboard/dist"
-}
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "weiflycc",
+  "main": "./worker/src/index.ts",
+  "compatibility_date": "2026-09-30",
+
+  "assets": {
+    "directory": "./dashboard/dist"
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "weiflycc-db",
+      "database_id": "cb615e69-b922-446c-8658-da5da770c577"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "STORAGE",
+      "bucket_name": "weiflycc-storage"
+    }
+  ]
 }

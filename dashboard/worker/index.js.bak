@@ -1,0 +1,27 @@
+export default {
+async fetch(request, env) {
+const url = new URL(request.url)
+ 
+// Test API
+if (url.pathname === "/api/test") {
+return Response.json({
+status: "ok",
+project: "WeiflyCC",
+})
+}
+ 
+// D1 API
+if (url.pathname === "/api/d1") {
+const result = await env.WEIFLYCC_D1
+.prepare("SELECT datetime('now') as now")
+.first()
+ 
+return Response.json({
+database: "connected",
+result,
+})
+}
+ 
+return env.ASSETS.fetch(request)
+},
+}

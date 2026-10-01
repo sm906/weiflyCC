@@ -1,0 +1,349 @@
+import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+
+export default function App() {
+  const navigate = useNavigate()
+  const [files, setFiles] = useState<any[]>([])
+  const [loading, setLoading] = useState(false)
+
+  async function loadFiles() {
+    try {
+      const res = await fetch("/api/storage/list")
+      const data = await res.json()
+      setFiles(data)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  useEffect(() => {
+    loadFiles()
+  }, [])
+
+  async function uploadFile(
+    e: React.ChangeEvent<HTMLInputElement>
+  ) {
+    const file = e.target.files?.[0]
+
+    if (!file) return
+
+    setLoading(true)
+
+    try {
+      const formData = new FormData()
+
+      formData.append("file", file)
+
+      await fetch("/api/storage/upload", {
+        method: "POST",
+        body: formData,
+      })
+
+      await loadFiles()
+    } catch (err) {
+      console.error(err)
+    }
+
+    setLoading(false)
+  }
+
+  function downloadFile(name: string) {
+    window.open(
+      `/api/storage/download/${encodeURIComponent(name)}`,
+      "_blank"
+    )
+  }
+
+  async function deleteFile(name: string) {
+    if (!confirm(`Delete ${name}?`)) return
+
+    try {
+      await fetch(
+        `/api/storage/delete/${encodeURIComponent(name)}`,
+        {
+          method: "DELETE",
+        }
+      )
+
+      await loadFiles()
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const totalSize = files.reduce(
+    (sum, file) => sum + file.size,
+    0
+  )
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        padding: "30px",
+        background:
+          "linear-gradient(135deg,#060c18,#0a1740,#102860)",
+        color: "#ffffff",
+        fontFamily: "system-ui",
+      }}
+    >
+      <h1
+        style={{
+          color: "#7dd3fc",
+          fontSize: "40px",
+          marginBottom: "6px",
+        }}
+      >
+        🦅 WeiflyCC OS
+      </h1>
+
+      <p
+        style={{
+          color: "#94a3b8",
+          marginBottom: "28px",
+        }}
+      >
+        Home Lab + Cloud + AI Control Center
+      </p>
+
+      {/* Statistics */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(auto-fit,minmax(220px,1fr))",
+          gap: "20px",
+          marginBottom: "25px",
+        }}
+      >
+        <div
+          className="realm-card"
+          style={{
+            background: "#0f172a",
+            border: "1px solid #2563eb",
+            borderRadius: "16px",
+            padding: "20px",
+          }}
+        >
+          <h3>📁 Files</h3>
+          <h2>{files.length}</h2>
+        </div>
+
+        <div
+          className="realm-card"
+          style={{
+            background: "#0f172a",
+            border: "1px solid #2563eb",
+            borderRadius: "16px",
+            padding: "20px",
+          }}
+        >
+          <h3>💾 Storage</h3>
+          <h2>
+            {(totalSize / 1024 / 1024).toFixed(2)}
+            MB
+          </h2>
+        </div>
+
+        <div
+          className="realm-card"
+          style={{
+            background: "#0f172a",
+            border: "1px solid #2563eb",
+            borderRadius: "16px",
+            padding: "20px",
+          }}
+        >
+          <h3>☁️ Status</h3>
+          <h2>ONLINE</h2>
+        </div>
+      </div>
+
+      {/* Four Realms */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(auto-fit,minmax(250px,1fr))",
+          gap: "20px",
+          marginBottom: "25px",
+        }}
+      >
+        <div
+          className="realm-card"
+          onClick={() => navigate("/infra")}
+            (window.location.href = "/infra")
+          }
+          style={{
+            background: "#0f172a",
+            border: "1px solid #2563eb",
+            borderRadius: "16px",
+            padding: "20px",
+            cursor: "pointer",
+          }}
+        >
+          <h2>🌍 Realm 1</h2>
+          <p>Infrastructure</p>
+          <small>
+            Ubuntu / Docker / Network
+          </small>
+        </div>
+
+        <div
+          className="realm-card"
+          onClick={() => navigate("/r2")}
+            (window.location.href = "/r2")
+          }
+          style={{
+            background: "#0f172a",
+            border: "1px solid #2563eb",
+            borderRadius: "16px",
+            padding: "20px",
+            cursor: "pointer",
+          }}
+        >
+          <h2>☁️ Realm 2</h2>
+          <p>Cloud Services</p>
+          <small>
+            Cloudflare / R2 / D1
+          </small>
+        </div>
+
+        <div
+          className="realm-card"
+          onClick={() => navigate("/ai")}
+            (window.location.href = "/ai")
+          }
+          style={{
+            background: "#0f172a",
+            border: "1px solid #2563eb",
+            borderRadius: "16px",
+            padding: "20px",
+            cursor: "pointer",
+          }}
+        >
+          <h2>🤖 Realm 3</h2>
+          <p>AI Systems</p>
+          <small>
+            OpenAI / Gemini / Ollama
+          </small>
+        </div>
+
+        <div
+          className="realm-card"
+          onClick={() => navigate("/cc")}
+            (window.location.href = "/cc")
+          }
+          style={{
+            background: "#0f172a",
+            border: "1px solid #2563eb",
+            borderRadius: "16px",
+            padding: "20px",
+            cursor: "pointer",
+          }}
+        >
+          <h2>📊 Realm 4</h2>
+          <p>Command Center</p>
+          <small>
+            Dashboard / Monitoring
+          </small>
+        </div>
+      </div>
+
+      {/* Upload */}
+      <div
+        style={{
+          background: "#0f172a",
+          borderRadius: "16px",
+          border: "1px solid #2563eb",
+          padding: "20px",
+          marginBottom: "25px",
+        }}
+      >
+        <h2>☁️ R2 Storage Upload</h2>
+
+        <input
+          type="file"
+          onChange={uploadFile}
+        />
+
+        {loading && (
+          <p
+            style={{
+              color: "#38bdf8",
+            }}
+          >
+            Uploading...
+          </p>
+        )}
+      </div>
+
+      {/* File List */}
+      <div
+        style={{
+          background: "#0f172a",
+          borderRadius: "16px",
+          border: "1px solid #2563eb",
+          padding: "20px",
+        }}
+      >
+        <h2>📂 R2 Objects</h2>
+
+        {files.length === 0 && (
+          <p>No files found.</p>
+        )}
+
+        {files.map((file) => (
+          <div
+            key={file.key}
+            style={{
+              display: "flex",
+              justifyContent:
+                "space-between",
+              alignItems: "center",
+              background: "#111827",
+              padding: "15px",
+              borderRadius: "10px",
+              marginTop: "10px",
+            }}
+          >
+            <div>
+              <strong>{file.key}</strong>
+
+              <div
+                style={{
+                  color: "#94a3b8",
+                }}
+              >
+                {(file.size / 1024).toFixed(2)}
+                KB
+              </div>
+            </div>
+
+            <div>
+              <button
+                className="action-btn download-btn"
+                onClick={() =>
+                  downloadFile(file.key)
+                }
+              >
+                Download
+              </button>
+
+              {" "}
+
+              <button
+                className="action-btn delete-btn"
+                onClick={() =>
+                  deleteFile(file.key)
+                }
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
