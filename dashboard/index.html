@@ -1,13 +1,592 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dashboard</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WeiflyCC OS</title>
+
+<style>
+:root{
+    --bg:#050816;
+    --card:rgba(255,255,255,.05);
+    --border:rgba(255,255,255,.08);
+
+    --primary:#00d1ff;
+    --secondary:#5b8cff;
+    --ai:#905dff;
+    --success:#00ffb2;
+
+    --text:#ffffff;
+    --muted:#9fb5db;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:white;
+    font-family:Inter,Segoe UI,sans-serif;
+    overflow-x:hidden;
+}
+
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+
+#boot{
+    position:fixed;
+    inset:0;
+    background:#000814;
+    z-index:9999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    transition:1.5s;
+}
+
+#boot.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.logo{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:8px;
+    color:var(--primary);
+    text-shadow:0 0 25px var(--primary);
+}
+
+.boot-log{
+    margin-top:30px;
+    width:min(650px,90%);
+    font-family:monospace;
+    color:#87dfff;
+}
+
+.boot-line{
+    margin:6px 0;
+    opacity:0;
+    animation:fade .5s forwards;
+}
+
+@keyframes fade{
+    to{opacity:1}
+}
+
+header{
+    padding:24px 40px;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,.25);
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.nav{
+    max-width:1400px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.brand{
+    font-size:24px;
+    font-weight:700;
+}
+
+.status{
+    color:var(--success);
+}
+
+.hero{
+    min-height:70vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:clamp(42px,8vw,90px);
+    font-weight:900;
+
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #00d1ff,
+        #5b8cff
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:clamp(16px,2vw,24px);
+    color:var(--muted);
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:40px 24px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:24px;
+
+    backdrop-filter:blur(18px);
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:var(--primary);
+
+    box-shadow:
+    0 0 40px rgba(0,209,255,.25);
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 10px;
+
+    border-radius:100px;
+
+    background:rgba(255,255,255,.08);
+
+    margin:4px;
+    font-size:12px;
+}
+
+.core{
+    margin-top:40px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,209,255,.08),
+        rgba(91,140,255,.08)
+    );
+}
+
+.core-stats{
+    margin-top:20px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.stat{
+    text-align:center;
+}
+
+.stat h2{
+    color:var(--primary);
+}
+
+.command{
+    margin-top:40px;
+}
+
+.command-box{
+    margin-top:20px;
+    display:flex;
+}
+
+.command-box input{
+    flex:1;
+
+    background:#091321;
+
+    border:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:18px;
+
+    padding:18px;
+
+    border-radius:14px;
+}
+
+footer{
+    text-align:center;
+    color:#7793bb;
+    padding:50px 25px;
+}
+
+@media(max-width:980px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .core-stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:18px;
+    }
+
+    .core-stats{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:60vh;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div id="boot">
+
+    <div class="logo">
+        WEIFLYCC
+    </div>
+
+    <div class="boot-log" id="bootLog"></div>
+
+</div>
+
+<header>
+
+    <div class="nav">
+
+        <div class="brand">
+            WEIFLYCC OS
+        </div>
+
+        <div class="status">
+            ● CORE ONLINE
+        </div>
+
+    </div>
+
+</header>
+
+<section class="hero">
+
+    <h1>
+        WEIFLYCC OS
+    </h1>
+
+    <p>
+        One Core • Three Realms • Infinite Possibilities
+    </p>
+
+</section>
+
+<div class="container">
+
+    <div class="card core">
+
+        <h2>WeiflyCC Core</h2>
+
+        <p>
+            Infrastructure · Memory · Workflow · Automation · Network · Identity
+        </p>
+
+        <div class="core-stats">
+
+            <div class="stat">
+                <h2>99%</h2>
+                <p>System</p>
+            </div>
+
+            <div class="stat">
+                <h2>12</h2>
+                <p>Services</p>
+            </div>
+
+            <div class="stat">
+                <h2>3</h2>
+                <p>Realms</p>
+            </div>
+
+            <div class="stat">
+                <h2>24ms</h2>
+                <p>Latency</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="grid" style="margin-top:40px">
+
+        <div class="card">
+
+            <h3>☁ Cloudflare Realm</h3>
+
+            <span class="badge">DNS</span>
+            <span class="badge">Tunnel</span>
+            <span class="badge">Zero Trust</span>
+            <span class="badge">Workers</span>
+            <span class="badge">Pages</span>
+
+        </div>
+
+        <div class="card">
+
+            <h3>🪟 Microsoft Realm</h3>
+
+            <span class="badge">Outlook</span>
+            <span class="badge">OneDrive</span>
+            <span class="badge">Copilot</span>
+            <span class="badge">Graph</span>
+            <span class="badge">Azure</span>
+
+        </div>
+
+        <div class="card">
+
+            <h3>⚡ AI Realm</h3>
+
+            <span class="badge">Open WebUI</span>
+            <span class="badge">Ollama</span>
+            <span class="badge">Models</span>
+            <span class="badge">MCP</span>
+
+        </div>
+
+    </div>
+
+    <div class="card command">
+
+        <h2>Command Center</h2>
+
+        <p>Ask WeiflyCC...</p>
+
+        <div class="command-box">
+
+            <input
+                id="ccInput"
+                placeholder="cc status / cc docker / cc logs"
+            />
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+
+    WeiflyCC OS v1.0<br>
+    Single Core Architecture
+
+</footer>
+
+<script>
+
+/* ---------------------------
+   Boot Sequence
+---------------------------- */
+
+const logs = [
+"Initializing WeiflyOS Kernel...",
+"Loading Identity...",
+"Loading Memory...",
+"Loading Network...",
+"Connecting Cloudflare Realm...",
+"Connecting Microsoft Realm...",
+"Connecting AI Realm...",
+"Starting Command Center...",
+"Core Online."
+];
+
+const logBox = document.getElementById("bootLog");
+
+let i = 0;
+
+const bootTimer = setInterval(()=>{
+
+    if(i < logs.length){
+
+        const div = document.createElement("div");
+
+        div.className = "boot-line";
+
+        div.innerHTML = "✓ " + logs[i];
+
+        logBox.appendChild(div);
+
+        i++;
+    }
+
+},800);
+
+setTimeout(()=>{
+
+    clearInterval(bootTimer);
+
+    document
+    .getElementById("boot")
+    .classList
+    .add("hide");
+
+},8000);
+
+/* ---------------------------
+   Fake Command Center
+---------------------------- */
+
+const input = document.getElementById("ccInput");
+
+input.addEventListener("keydown",e=>{
+
+    if(e.key==="Enter"){
+
+        const cmd = input.value;
+
+        if(cmd==="cc status")
+            alert("Core Online");
+
+        else if(cmd==="cc docker")
+            alert("Docker Dashboard");
+
+        else if(cmd==="cc logs")
+            alert("System Logs");
+
+        else
+            alert("Command: " + cmd);
+
+        input.value="";
+    }
+
+});
+
+/* ---------------------------
+   Particles
+---------------------------- */
+
+const canvas =
+document.getElementById("particles");
+
+const ctx =
+canvas.getContext("2d");
+
+let particles=[];
+
+function resize(){
+
+    canvas.width=innerWidth;
+    canvas.height=innerHeight;
+
+}
+
+resize();
+
+addEventListener("resize",resize);
+
+for(let i=0;i<120;i++){
+
+    particles.push({
+
+        x:Math.random()*innerWidth,
+        y:Math.random()*innerHeight,
+        r:Math.random()*2,
+        dx:(Math.random()-.5)*0.4,
+        dy:(Math.random()-.5)*0.4
+
+    });
+
+}
+
+function animate(){
+
+    ctx.clearRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+    particles.forEach(p=>{
+
+        p.x+=p.dx;
+        p.y+=p.dy;
+
+        if(p.x<0||p.x>innerWidth) p.dx*=-1;
+        if(p.y<0||p.y>innerHeight) p.dy*=-1;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.r,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle =
+        "rgba(0,209,255,.8)";
+
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+animate();
+
+</script>
+
+</body>
 </html>
