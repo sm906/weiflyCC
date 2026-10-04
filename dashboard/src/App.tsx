@@ -30,6 +30,11 @@ export default function App() {
       icon: "📊",
       name: "Dashboard",
     },
+    {
+      path: "/Azure",
+      icon: "☁️",
+      name: "azure"
+    } 
   ]
 
   return (

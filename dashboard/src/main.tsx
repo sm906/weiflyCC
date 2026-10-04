@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
+import Azure from "./pages/Azure"
 
 import {
   BrowserRouter,
@@ -23,6 +24,7 @@ ReactDOM.createRoot(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/azure" element={<Azure />} />
 
         <Route
           path="/infra"
