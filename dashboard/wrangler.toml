@@ -11,13 +11,17 @@ directory = "./dist"
 binding = "ASSETS"
 
 [[routes]]
-pattern = "weiflycc.com/*"
-zone_name = "weiflycc.com"
+pattern = "*.weiflycc.net/*"
+zone_name = "ai.weiflycc.net"
 
 [[d1_databases]]
-binding = "WEIFLYCC_D1"
+binding = "DB"
 database_id = "cb615e69-b922-446c-8658-da5da770c577"
 
 [[r2_buckets]]
 binding = "STORAGE"
 bucket_name = "weiflycc-storage"
+
+[[previews.ai]]
+binding = "AI"
+
