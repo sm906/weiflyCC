@@ -25,31 +25,37 @@ export default function App() {
   }, [location.pathname]);
 
   const menus = [
-    { path: "/", icon: "🛰️", name: "CC-01" },
-    { path: "/infra", icon: "☁️", name: "Cloudflare" },
-    { path: "/azure", icon: "🪟", name: "Microsoft" },
-    { path: "/ai", icon: "🤖", name: "AI Realm" },
-    { path: "/r2", icon: "🗄️", name: "Storage" },
-    { path: "/cc", icon: "🦅", name: "CC Center" },
+    {
+      path: "/",
+      icon: "🛰️",
+      name: "CC-01",
+    },
+    {
+      path: "/infra",
+      icon: "☁️",
+      name: "Cloudflare",
+    },
+    {
+      path: "/azure",
+      icon: "🪟",
+      name: "Microsoft",
+    },
+    {
+      path: "/ai",
+      icon: "🤖",
+      name: "AI Realm",
+    },
+    {
+      path: "/r2",
+      icon: "🗄️",
+      name: "Storage",
+    },
+    {
+      path: "/cc",
+      icon: "🦅",
+      name: "CC Center",
+    },
   ];
-
-  const hoverIn = (e: any) => {
-    e.currentTarget.style.transform =
-      "translateY(-8px) scale(1.02)";
-    e.currentTarget.style.border =
-      "1px solid #60a5fa";
-    e.currentTarget.style.boxShadow =
-      "0 0 30px rgba(96,165,250,.45)";
-  };
-
-  const hoverOut = (e: any) => {
-    e.currentTarget.style.transform =
-      "translateY(0px) scale(1)";
-    e.currentTarget.style.border =
-      "1px solid #334155";
-    e.currentTarget.style.boxShadow =
-      "none";
-  };
 
   const cardStyle = {
     background: "rgba(15,23,42,.95)",
@@ -62,6 +68,28 @@ export default function App() {
     textAlign: "left" as const,
   };
 
+  const hoverIn = (e: any) => {
+    e.currentTarget.style.transform =
+      "translateY(-8px) scale(1.02)";
+
+    e.currentTarget.style.border =
+      "1px solid #60a5fa";
+
+    e.currentTarget.style.boxShadow =
+      "0 0 25px rgba(96,165,250,.35)";
+  };
+
+  const hoverOut = (e: any) => {
+    e.currentTarget.style.transform =
+      "translateY(0px) scale(1)";
+
+    e.currentTarget.style.border =
+      "1px solid #334155";
+
+    e.currentTarget.style.boxShadow =
+      "none";
+  };
+
   return (
     <div
       style={{
@@ -72,6 +100,8 @@ export default function App() {
         color: "white",
       }}
     >
+      {/* Sidebar */}
+
       <aside
         style={{
           width: "260px",
@@ -116,7 +146,9 @@ export default function App() {
                   : "4px solid transparent",
 
                 borderRadius: "12px",
+
                 color: "#ffffff",
+
                 cursor: "pointer",
               }}
             >
@@ -125,6 +157,8 @@ export default function App() {
           );
         })}
       </aside>
+
+      {/* Main */}
 
       <main
         style={{
@@ -138,61 +172,41 @@ export default function App() {
             margin: "0 auto",
           }}
         >
+          {/* Hero */}
+
           <div
             style={{
               textAlign: "center",
-              marginBottom: "40px",
+              marginBottom: "50px",
             }}
           >
             <div
               style={{
-                width: "220px",
-                height: "220px",
-                margin: "0 auto",
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(circle,#60a5fa 0%,#1e40af 45%,#050816 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow:
-                  "0 0 60px rgba(96,165,250,.6)",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "70px",
-                  fontWeight: "bold",
-                }}
-              >
-                CC
-              </div>
-            </div>
-
-            <h1
-              style={{
-                marginTop: "24px",
-                fontSize: "64px",
+                fontSize: "76px",
                 color: "#7dd3fc",
+                textShadow:
+                  "0 0 20px rgba(125,211,252,.7)",
+                fontWeight: "bold",
               }}
             >
               CC-01
-            </h1>
-
-            <h2
-              style={{
-                color: "#94a3b8",
-                fontWeight: 300,
-              }}
-            >
-              Navigator
-            </h2>
+            </div>
 
             <div
               style={{
+                fontSize: "28px",
+                color: "#cbd5e1",
+                marginTop: "10px",
+              }}
+            >
+              Navigator
+            </div>
+
+            <div
+              style={{
+                marginTop: "20px",
                 color: "#4ade80",
                 fontWeight: "bold",
-                marginTop: "16px",
               }}
             >
               🟢 WeiflyCC Core Online
@@ -200,8 +214,8 @@ export default function App() {
 
             <div
               style={{
-                marginTop: "24px",
-                fontSize: "24px",
+                marginTop: "35px",
+                fontSize: "26px",
                 lineHeight: 1.8,
               }}
             >
@@ -213,11 +227,13 @@ export default function App() {
             </div>
           </div>
 
+          {/* Cards */}
+
           <div
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(250px,1fr))",
+                "repeat(auto-fit,minmax(260px,1fr))",
               gap: "20px",
             }}
           >
@@ -229,7 +245,10 @@ export default function App() {
             >
               <h2>☁️ 我想搞雲</h2>
               <p>Cloudflare Realm</p>
-              <small>DNS / Tunnel / Workers</small>
+              <small>
+                Tunnel / DNS / Workers /
+                Zero Trust
+              </small>
             </div>
 
             <div
@@ -240,7 +259,10 @@ export default function App() {
             >
               <h2>🪟 我想搞微軟</h2>
               <p>Microsoft Realm</p>
-              <small>365 / Copilot / Azure</small>
+              <small>
+                Microsoft 365 / Copilot /
+                Azure
+              </small>
             </div>
 
             <div
@@ -251,7 +273,10 @@ export default function App() {
             >
               <h2>🤖 我想玩 AI</h2>
               <p>AI Realm</p>
-              <small>Open WebUI / Ollama</small>
+              <small>
+                Open WebUI / Ollama /
+                Qwen3
+              </small>
             </div>
 
             <div
@@ -260,7 +285,8 @@ export default function App() {
               onMouseLeave={hoverOut}
               onClick={() => navigate("/cc")}
             >
-              <h2>🚀 今日任務</h2>
+              <h2>📂 繼續昨天的工作</h2>
+
               <small>
                 Ubuntu 遷移完成 ✅
                 <br />
@@ -268,14 +294,16 @@ export default function App() {
                 <br />
                 Ollama Online ✅
                 <br />
-                CC-01 首頁建置中
+                AI Realm Online ✅
               </small>
             </div>
           </div>
 
+          {/* Status */}
+
           <div
             style={{
-              marginTop: "32px",
+              marginTop: "40px",
               background: "#0f172a",
               border: "1px solid #1e293b",
               borderRadius: "20px",
@@ -283,8 +311,9 @@ export default function App() {
             }}
           >
             <h3>🟢 Realm Status</h3>
+
             <p>☁️ Cloudflare Realm Online</p>
-            <p>🪟 Microsoft Realm Ready</p>
+            <p>🪟 Microsoft Realm Online</p>
             <p>🤖 AI Realm Online</p>
             <p>🦅 CC Core Online</p>
           </div>
