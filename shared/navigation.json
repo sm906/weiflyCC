@@ -1,0 +1,31 @@
+{
+  "platform": "WeiflyCC Digital Platform",
+
+  "realms": [
+
+    {
+      "code": "INFO",
+      "title": "威飛文建館",
+      "url": "https://weiflycc.info"
+    },
+
+    {
+      "code": "COM",
+      "title": "威飛展示館",
+      "url": "https://weiflycc.com"
+    },
+
+    {
+      "code": "ORG",
+      "title": "威飛認證中心",
+      "url": "https://weiflycc.org"
+    },
+
+    {
+      "code": "NET",
+      "title": "威飛控制中心",
+      "url": "https://weiflycc.net"
+    }
+
+  ]
+}

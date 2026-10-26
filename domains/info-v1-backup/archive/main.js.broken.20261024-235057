@@ -1,0 +1,48 @@
+const cc=document.getElementById("cc02");
+const bubble=document.getElementById("bubble");
+
+if(cc && bubble){
+
+const msgs=[
+"歡迎來到威飛數研社",
+"今天 CC 了嗎？",
+"需要網站建置嗎？",
+"Cloudflare Ready",
+"AI Ready",
+"哥，帶你飛"
+];
+
+function say(text){
+
+bubble.innerText=text;
+
+const r=cc.getBoundingClientRect();
+
+bubble.style.left=(r.left-180)+"px";
+bubble.style.top=(r.top+10)+"px";
+
+bubble.style.display="block";
+
+setTimeout(()=>{
+bubble.style.display="none";
+},3000);
+
+}
+
+cc.addEventListener("click",()=>{
+
+say(
+msgs[Math.floor(Math.random()*msgs.length)]
+);
+
+});
+
+setInterval(()=>{
+
+say(
+msgs[Math.floor(Math.random()*msgs.length)]
+);
+
+},20000);
+
+}

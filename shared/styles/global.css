@@ -1,0 +1,28 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: #020617;
+  color: white;
+  font-family:
+    Inter,
+    "Noto Sans TC",
+    sans-serif;
+}
+
+.glass {
+  background: rgba(15,23,42,.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.realm-card {
+  transition: all .25s ease;
+}
+
+.realm-card:hover {
+  transform: translateY(-4px);
+}

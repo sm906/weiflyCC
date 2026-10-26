@@ -1,0 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export default function Footer() {
+    return (_jsx("footer", { className: "border-t border-slate-800", children: _jsxs("div", { className: "mx-auto max-w-7xl px-6 py-10", children: [_jsx("div", { className: "font-bold text-white", children: "WeiflyCC" }), _jsx("div", { className: "mt-2 text-slate-400", children: "\u4E00\u500B\u6838\u5FC3\u30FB\u56DB\u5927\u7DB2\u57DF\u30FB\u4E09\u5927\u4E16\u754C" }), _jsxs("div", { className: "mt-6 flex flex-wrap gap-4 text-sm text-slate-500", children: [_jsx("span", { children: "\u2601 \u5C0F\u6A58\u96F2\u4E16\u754C" }), _jsx("span", { children: "\u229E \u5C0F\u5FAE\u8EDF\u4E16\u754C" }), _jsx("span", { children: "\u25C9 \u5C0FAI\u4E16\u754C" })] }), _jsx("div", { className: "mt-6 text-xs text-slate-600", children: "\u00A9 2026 WeiflyCC" })] }) }));
+}

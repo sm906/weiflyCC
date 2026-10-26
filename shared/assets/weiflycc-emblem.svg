@@ -1,0 +1,204 @@
+<svg
+  width="1024"
+  height="1024"
+  viewBox="0 0 1024 1024"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+
+    <linearGradient id="weiflyBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+
+    <radialGradient id="coreGlow">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </radialGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+  </defs>
+
+  <!-- 背景 -->
+  <circle
+    cx="512"
+    cy="512"
+    r="500"
+    fill="#020617"
+  />
+
+  <!-- 軌道 -->
+  <circle
+    cx="512"
+    cy="512"
+    r="380"
+    stroke="url(#weiflyBlue)"
+    stroke-width="8"
+    opacity="0.3"
+  />
+
+  <circle
+    cx="512"
+    cy="512"
+    r="300"
+    stroke="#334155"
+    stroke-width="3"
+    opacity="0.5"
+  />
+
+  <!-- 地球 -->
+  <circle
+    cx="512"
+    cy="512"
+    r="180"
+    fill="url(#coreGlow)"
+    stroke="#60A5FA"
+    stroke-width="4"
+  />
+
+  <!-- 經緯線 -->
+  <ellipse
+    cx="512"
+    cy="512"
+    rx="180"
+    ry="70"
+    stroke="#38BDF8"
+    stroke-width="2"
+    opacity="0.4"
+  />
+
+  <ellipse
+    cx="512"
+    cy="512"
+    rx="180"
+    ry="120"
+    stroke="#38BDF8"
+    stroke-width="2"
+    opacity="0.3"
+  />
+
+  <!-- 雄鷹左翼 -->
+  <path
+    d="
+      M190 350
+      L430 250
+      L350 430
+      L250 480
+      Z
+    "
+    fill="url(#weiflyBlue)"
+    filter="url(#glow)"
+  />
+
+  <!-- 雄鷹右翼 -->
+  <path
+    d="
+      M834 350
+      L594 250
+      L674 430
+      L774 480
+      Z
+    "
+    fill="url(#weiflyBlue)"
+    filter="url(#glow)"
+  />
+
+  <!-- 上方鷹首 -->
+  <path
+    d="
+      M472 220
+      L552 220
+      L595 285
+      L512 340
+      L430 285
+      Z
+    "
+    fill="#E2E8F0"
+  />
+
+  <!-- CC -->
+  <path
+    d="
+      M450 470
+      C390 470 350 515 350 575
+      C350 635 390 680 450 680
+    "
+    stroke="#FFFFFF"
+    stroke-width="30"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <path
+    d="
+      M650 470
+      C590 470 550 515 550 575
+      C550 635 590 680 650 680
+    "
+    stroke="#FFFFFF"
+    stroke-width="30"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <!-- AI 核心 -->
+  <circle
+    cx="512"
+    cy="575"
+    r="22"
+    fill="#22D3EE"
+    filter="url(#glow)"
+  />
+
+  <!-- 衛星 -->
+  <circle
+    cx="825"
+    cy="340"
+    r="16"
+    fill="#F8FAFC"
+  />
+
+  <line
+    x1="512"
+    y1="512"
+    x2="825"
+    y2="340"
+    stroke="#60A5FA"
+    stroke-width="2"
+    opacity="0.4"
+  />
+
+  <!-- 下方標誌 -->
+  <text
+    x="512"
+    y="840"
+    fill="#E2E8F0"
+    text-anchor="middle"
+    font-size="72"
+    font-family="Segoe UI, sans-serif"
+    font-weight="700"
+  >
+    WeiflyCC
+  </text>
+
+  <text
+    x="512"
+    y="900"
+    fill="#94A3B8"
+    text-anchor="middle"
+    font-size="28"
+    font-family="Segoe UI, sans-serif"
+  >
+    Cloud • Microsoft • AI
+  </text>
+
+</svg>

@@ -1,0 +1,30 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mobileNav");
+
+  if(toggle && nav){
+
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+
+  }
+
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+
+    });
+
+  });
+
+  document.querySelectorAll(".card").forEach(card => {
+    observer.observe(card);
+  });
+
+});

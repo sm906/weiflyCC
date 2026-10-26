@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>威飛展示館｜WeiflyCC COM</title>
+
+<meta name="description"
+content="威飛展示館，展示網站建置、雲端整合、AI 應用與數位平台成果。">
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="container nav">
+
+<a href="https://weiflycc.info" class="brand">
+
+<img src="/static/img/logo4.jpg" alt="WeiflyCC">
+
+<div>
+<span>威飛展示館</span>
+<small>COM Showcase Realm</small>
+</div>
+
+</a>
+
+<nav>
+
+<a href="https://weiflycc.info">INFO</a>
+<a href="https://weiflycc.com">COM</a>
+<a href="https://weiflycc.org">ORG</a>
+<a href="https://weiflycc.net">NET</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="container hero-grid">
+
+<div>
+
+<div class="hero-badge">
+WeiflyCC Showcase Realm
+</div>
+
+<h1>
+威飛展示館
+</h1>
+
+<p class="hero-subtitle">
+看見成果，而不只是承諾。
+</p>
+
+<p class="hero-description">
+每一個完成的專案，
+都是一次能力的驗證。
+
+我們相信展示成果，
+遠比展示技術更有價值。
+</p>
+
+<a href="#cases" class="btn">
+瀏覽作品
+</a>
+
+</div>
+
+<div class="hero-image">
+
+<img
+src="/static/img/ccpeople.jpg"
+alt="WeiflyCC Showcase"
+>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="cases">
+
+<div class="container">
+
+<h2>
+精選案例
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+🦅 WeiflyCC Digital Platform
+</h3>
+
+<p>
+威飛數位平台四大入口與 Core API 整合架構。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+🌐 Cloudflare Platform
+</h3>
+
+<p>
+Pages、Workers、Zero Trust、DNS 整合應用。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+🤖 AI Realm
+</h3>
+
+<p>
+Open WebUI、Ollama、本地 AI 生態系建置。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+☁️ Private Cloud
+</h3>
+
+<p>
+自建雲端、儲存、同步與資料管理平台。
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>
+核心能力
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>網站建置</h3>
+<p>企業網站、展示網站與數位入口。</p>
+</div>
+
+<div class="card">
+<h3>雲端整合</h3>
+<p>Cloudflare、DNS、Tunnel、Zero Trust。</p>
+</div>
+
+<div class="card">
+<h3>AI 應用</h3>
+<p>本地 AI、聊天機器人與知識庫。</p>
+</div>
+
+<div class="card">
+<h3>系統規劃</h3>
+<p>平台整合與長期維運架構。</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>
+合作流程
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>① 需求討論</h3>
+</div>
+
+<div class="card">
+<h3>② 方案規劃</h3>
+</div>
+
+<div class="card">
+<h3>③ 建置上線</h3>
+</div>
+
+<div class="card">
+<h3>④ 長期維運</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>
+COM 宣言
+</h2>
+
+<p>
+展示不是炫耀成果。
+</p>
+
+<p>
+而是讓每一份努力被看見。
+</p>
+
+<p>
+看見成果，而不只是承諾。
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="container">
+
+<h3>
+威飛展示館
+</h3>
+
+<p>
+INFO ｜ COM ｜ ORG ｜ NET
+</p>
+
+<p>
+展示成果｜案例驗證｜共同成長
+</p>
+
+<p>
+ice@weiflycc.com
+</p>
+
+</div>
+
+</footer>
+
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,630 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#09111f;
+    color:white;
+    font-family:"Segoe UI",sans-serif;
+}
+
+.hero{
+    min-height:85vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.72),
+        rgba(0,0,0,.85)
+    ),
+    url('/static/img/小cc.png');
+
+    background-size:cover;
+    background-position:center;
+
+}
+
+.overlay{
+    max-width:1000px;
+    padding:40px;
+}
+
+.hero h1{
+    font-size:4rem;
+}
+
+.subtitle{
+    color:#7cc4ff;
+    margin:12px 0;
+}
+
+nav{
+    margin-top:30px;
+}
+
+nav a{
+    display:inline-block;
+    margin:8px;
+    padding:12px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    background:#155eef;
+}
+
+.services{
+    display:grid;
+    gap:20px;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    padding:60px;
+}
+
+.card{
+    background:#121d31;
+    border:1px solid #21324d;
+    border-radius:16px;
+    padding:24px;
+}
+
+.contact{
+    padding:60px;
+    text-align:center;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #21324d;
+}
+
+.hero-logo{
+    width:min(900px,90%);
+    display:block;
+    margin:0 auto 30px;
+}
+
+.portal-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+    max-width:1200px;
+
+    margin:40px auto 0;
+}
+
+.portal-card{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.3s;
+}
+
+.portal-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#3c88ff;
+
+    box-shadow:
+    0 0 30px
+    rgba(60,136,255,.25);
+}
+
+.portal-card strong{
+    font-size:1.5rem;
+}
+
+.portal-card span{
+    color:#9eb7d8;
+}
+
+.portal-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+    max-width:1200px;
+
+    margin:40px auto 0;
+}
+
+.portal-card{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.3s;
+}
+
+.portal-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#3c88ff;
+
+    box-shadow:
+    0 0 30px
+    rgba(60,136,255,.25);
+}
+
+.portal-card strong{
+    font-size:1.5rem;
+}
+
+.portal-card span{
+    color:#9eb7d8;
+}
+
+.about-brand{
+
+    text-align:center;
+
+    max-width:1000px;
+
+    margin:80px auto;
+
+    padding:40px;
+}
+
+.brand-seal{
+
+    width:min(700px,100%);
+
+    border-radius:20px;
+
+    margin-bottom:30px;
+
+    box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.4);
+}
+
+.cc01-home {
+
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap:60px;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:80px 40px;
+}
+
+.cc01-status{
+    color:#54d38a;
+    margin-bottom:30px;
+}
+
+.welcome-title{
+
+    font-size:4rem;
+
+    background:
+    linear-gradient(
+        90deg,
+        #00d4ff,
+        #9d6bff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.welcome-subtitle{
+
+    font-size:2.5rem;
+
+    margin-top:20px;
+}
+
+.welcome-description{
+
+    margin-top:30px;
+
+    font-size:1.2rem;
+
+    line-height:2;
+}
+
+.cc01-chatbox{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:40px;
+}
+
+.cc01-chatbox input{
+
+    flex:1;
+
+    padding:20px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#111a2c;
+
+    color:white;
+}
+
+.cc01-chatbox button{
+
+    padding:20px 28px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#8a5cff;
+
+    color:white;
+}
+
+.quick-actions{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:25px;
+}
+
+.quick-actions span{
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    background:#101827;
+}
+
+.cc01-image{
+
+    max-width:550px;
+
+    width:100%;
+}
+
+.cc01-message{
+
+    margin-top:30px;
+
+    background:#101827;
+
+    padding:20px;
+
+    border-radius:20px;
+}
+
+.portal-section{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:60px 40px;
+}
+
+.portal-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.portal-card{
+
+    background:#101827;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.3s;
+}
+
+.portal-card:hover{
+
+    transform:translateY(-6px);
+}
+
+.motto{
+
+    text-align:center;
+
+    padding:100px 40px;
+}
+
+.cc01-home{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:60px;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:80px 40px;
+}
+
+.status-badge{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:99px;
+
+    background:#0c1829;
+
+    color:#47d17d;
+
+    margin-bottom:30px;
+}
+
+.chatbox{
+
+    margin-top:40px;
+
+    background:#0d1320;
+
+    border-radius:20px;
+
+    padding:20px;
+}
+
+#chat-log{
+
+    min-height:250px;
+
+    max-height:400px;
+
+    overflow:auto;
+}
+
+.bot-message{
+
+    background:#16233a;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    margin-bottom:10px;
+}
+
+.user-message{
+
+    background:#5636d9;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    margin-bottom:10px;
+
+    text-align:right;
+}
+
+.chat-input{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.chat-input input{
+
+    flex:1;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+}
+
+.chat-input button{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:16px 22px;
+
+    background:#7c4dff;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.cc01-visual img{
+
+    width:100%;
+
+    max-width:550px;
+}
+
+.portal-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    max-width:1400px;
+
+    margin:60px auto;
+
+    padding:0 40px;
+}
+
+.portal-card{
+
+    background:#101827;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    color:white;
+
+    text-decoration:none;
+}
+
+.portal-card:hover{
+
+    transform:translateY(-5px);
+}
+
+/* 手機版 */
+
+@media (max-width: 768px){
+
+    .cc01-home{
+
+        grid-template-columns:1fr;
+
+        padding:30px 20px;
+    }
+
+    .cc01-visual{
+
+        order:-1;
+
+        text-align:center;
+    }
+
+    .cc01-visual img{
+
+        max-width:300px;
+    }
+
+h1{
+
+        font-size:2rem;
+    }
+
+h2{
+
+        font-size:1.4rem;
+    }
+
+.chat-input{
+
+        flex-direction:column;
+    }
+.chat-input button{
+
+        width:100%;
+    }
+}
+
+.cc01-system-card{
+
+    margin-top:30px;
+
+    padding:24px;
+
+    border-radius:18px;
+
+    background:#101827;
+
+    border:1px solid #1f2937;
+
+    color:#fff;
+
+    line-height:2;
+}
+
+.cc01-system-card h3{
+
+    margin-bottom:15px;
+
+    color:#60d394;
+}
+
+.cc01-system-card.error{
+
+    color:#ff6b6b;
+}
